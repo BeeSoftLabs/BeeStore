@@ -11,7 +11,7 @@ export class Product {
   @Column('float', { default: 0 })
   price: number;
 
-  @Column({ type: 'text', nullable: true })
+  @Column('text', { nullable: true })
   description: string;
 
   @Column('int', { default: 0 })
@@ -20,6 +20,9 @@ export class Product {
   @Column('text', { array: true })
   sizes: string[];
 
-  @Column('text')
-  gender: string;
+  @Column('text', { array: true })
+  gender: string[];
+
+  @Column('bool', { default: true })
+  active: boolean;
 }
