@@ -7,8 +7,8 @@ import {
   MinLength,
 } from 'class-validator';
 
-import { validatePassword } from 'src/utils/actions/validations';
-import { MessageHandler } from 'src/utils/enums/message.handler';
+import { validatePassword } from 'src/shared/actions/validations';
+import { MessageHandler } from 'src/shared/enums';
 
 export class LoginAuthDto {
   @ApiProperty()

@@ -13,7 +13,7 @@ import * as bcrypt from 'bcrypt';
 
 import { CreateUserDto } from 'src/user/dto';
 import { User } from 'src/user/entities/user.entity';
-import { MessageHandler } from 'src/utils/enums/message.handler';
+import { MessageHandler } from 'src/shared/enums';
 import { LoginAuthDto } from './dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
@@ -30,7 +30,6 @@ export class AuthService {
   async createAuth(createUserDto: CreateUserDto) {
     try {
       const { password, ...userData } = createUserDto;
-
       const user = this.userRepository.create({
         ...userData,
         password: bcrypt.hashSync(password, 10),
@@ -40,7 +39,7 @@ export class AuthService {
       delete user.password;
       return {
         ...user,
-        token: this.getJwtToken({ email: user.email }),
+        token: this.getJwtToken({ id: user.id }),
       };
     } catch (error) {
       if (error.code === '23505')
@@ -58,7 +57,7 @@ export class AuthService {
     const { password, email } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { email: true, password: true },
+      select: { email: true, password: true, id: true },
     });
 
     if (!user)
@@ -67,9 +66,18 @@ export class AuthService {
     if (!bcrypt.compareSync(password, user.password))
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_CREDENTIALS);
 
+    delete user.id;
+
     return {
       ...user,
-      token: this.getJwtToken({ email: user.email }),
+      token: this.getJwtToken({ id: user.id }),
+    };
+  }
+
+  checkAuthStatus(user: User) {
+    return {
+      ...user,
+      token: this.getJwtToken({ id: user.id }),
     };
   }
 

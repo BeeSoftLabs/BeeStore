@@ -1,13 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsArray,
   IsEmail,
   IsString,
   Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { validatePassword } from 'src/utils/actions/validations';
-import { MessageHandler } from 'src/utils/enums/message.handler';
+
+import { validatePassword } from 'src/shared/actions/validations';
+import { MessageHandler } from 'src/shared/enums';
 
 export class CreateUserDto {
   @ApiProperty()
@@ -32,4 +34,12 @@ export class CreateUserDto {
   @IsString()
   @MinLength(1)
   lastname: string;
+
+  @ApiProperty()
+  @IsString()
+  state: string;
+
+  @ApiProperty()
+  @IsArray()
+  roles: string[];
 }

@@ -11,7 +11,8 @@ import { Repository } from 'typeorm';
 
 import { CreateProductDto, UpdateProductDto } from 'src/products/dto';
 import { Product } from './entities/product.entity';
-import { MessageHandler } from 'src/utils/enums/message.handler';
+import { MessageHandler } from 'src/shared/enums';
+import { User } from 'src/user/entities/user.entity';
 
 @Injectable()
 export class ProductsService {
@@ -22,9 +23,10 @@ export class ProductsService {
 
   private readonly logger = new Logger('ProductsService');
 
-  async create(createProductDto: CreateProductDto) {
+  async create(createProductDto: CreateProductDto, user: User) {
     try {
       const product = this.productRepository.create(createProductDto);
+      product.user = user;
       await this.productRepository.save(product);
       return product;
     } catch (error) {
@@ -47,7 +49,6 @@ export class ProductsService {
     const product = await this.productRepository.findOneBy({ id });
     if (!product)
       throw new NotFoundException(`Product with id ${id} not found`);
-    console.log(product);
 
     return product;
   }

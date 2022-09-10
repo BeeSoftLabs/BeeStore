@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { JwtPayload } from '../interfaces/jwt-payload.interface';
 import { User } from 'src/user/entities/user.entity';
-import { MessageHandler } from 'src/utils/enums/message.handler';
+import { MessageHandler, ValidState } from 'src/shared/enums';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -24,12 +24,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload): Promise<User> {
-    const { email } = payload;
-    const user = await this.userRepository.findOneBy({ email });
+    const { id } = payload;
+    const user = await this.userRepository.findOneBy({ id });
     if (!user)
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_TOKEN);
 
-    if (!user.active)
+    if (user.state !== ValidState.ACTIVE)
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_USER);
 
     return user;

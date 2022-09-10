@@ -3,16 +3,20 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
-import { UserRoles } from 'src/utils/enums/user.types';
+import { Product } from 'src/products/entities/product.entity';
 
 @Entity('user')
 export class User {
+  @Exclude({ toPlainOnly: true })
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Exclude({ toPlainOnly: true })
   @Column('text', { unique: true })
   email: string;
 
@@ -21,20 +25,23 @@ export class User {
   })
   password: string;
 
+  @Exclude({ toPlainOnly: true })
   @Column('text')
   name: string;
 
+  @Exclude({ toPlainOnly: true })
   @Column('text')
   lastname: string;
 
-  @Column('bool', { default: true })
-  active: boolean;
+  @Column('text')
+  state: string;
 
-  @Column('text', {
-    array: true,
-    default: [UserRoles.USER],
-  })
+  @Exclude({ toPlainOnly: true })
+  @Column('text', { array: true })
   roles: string[];
+
+  @OneToMany(() => Product, (product) => product.user)
+  product: Product;
 
   @BeforeInsert()
   checkFieldBeforeInsert() {
