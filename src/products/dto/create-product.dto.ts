@@ -50,6 +50,12 @@ export class CreateProductDto {
   gender: string[];
 
   @ApiProperty()
+  @IsString({ each: true })
+  @IsArray()
+  @IsOptional()
+  images?: string[];
+
+  @ApiProperty()
   @IsBoolean()
   active: boolean;
 }

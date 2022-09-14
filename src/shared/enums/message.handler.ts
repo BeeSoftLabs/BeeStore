@@ -14,4 +14,7 @@ export enum MessageHandler {
   USER_INACTIVE = 'User is inactive',
 
   EMAIL_ALREADY_EXIST = 'Email is all ready exist',
+
+  PRODUCT_ALREADY_EXIST = 'Product is already exist',
+  PRODUCT_NOT_FOUND = 'Product not found',
 }

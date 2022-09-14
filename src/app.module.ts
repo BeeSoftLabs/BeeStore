@@ -7,6 +7,7 @@ import { TypeOrmConfigModule } from './config/typeorm/typeorm.module';
 import { Product } from './products/entities/product.entity';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
     DatabaseModule,
     AuthModule,
     UserModule,
+    SeedModule,
   ],
 })
 export class AppModule {}

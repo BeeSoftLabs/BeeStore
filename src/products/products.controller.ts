@@ -8,6 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiOperation,
@@ -31,6 +32,7 @@ export class ProductsController {
     description: 'The record has been successfully created.',
   })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
+  @ApiBearerAuth()
   create(@Body() createProductDto: CreateProductDto, @GetUser() user: User) {
     return this.productsService.create(createProductDto, user);
   }
@@ -48,9 +50,10 @@ export class ProductsController {
   }
 
   @Patch(':id')
+  @Auth()
   @ApiOperation({ summary: 'Update product' })
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(+id, updateProductDto);
+    return this.productsService.update(id, updateProductDto);
   }
 
   @Delete(':id')
