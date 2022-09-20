@@ -9,6 +9,8 @@ import {
 import { Exclude } from 'class-transformer';
 
 import { Product } from 'src/products/entities/product.entity';
+import { ValidRoles } from 'src/shared/enums';
+import { ValidStatus } from 'src/shared/enums/valid.status';
 
 @Entity('user')
 export class User {
@@ -33,11 +35,18 @@ export class User {
   @Column('text')
   lastname: string;
 
-  @Column('text')
-  state: string;
+  @Column('text', {
+    nullable: true,
+    default: ValidStatus.ACTIVE,
+  })
+  status: string;
 
   @Exclude({ toPlainOnly: true })
-  @Column('text', { array: true })
+  @Column('text', {
+    array: true,
+    nullable: true,
+    default: [ValidRoles.USER],
+  })
   roles: string[];
 
   @OneToMany(() => Product, (product) => product.user)
@@ -46,6 +55,8 @@ export class User {
   @BeforeInsert()
   checkFieldBeforeInsert() {
     this.email = this.email.toLocaleLowerCase().trim();
+    this.name = this.name.toLocaleLowerCase().trim();
+    this.lastname = this.lastname.toLocaleLowerCase().trim();
   }
 
   @BeforeUpdate()

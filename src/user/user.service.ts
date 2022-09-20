@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 
 import { UpdateUserDto } from 'src/user/dto';
 import { User } from './entities/user.entity';
-import { MessageHandler, ValidState } from 'src/shared/enums';
+import { MessageHandler, ValidStatus } from 'src/shared/enums';
 
 @Injectable()
 export class UserService {
@@ -32,7 +32,7 @@ export class UserService {
     // TODO: Only admin can change role and status
 
     const user = await this.userRepository.findOne({ where: { id: id } });
-    if (user.state !== ValidState.ACTIVE)
+    if (user.status !== ValidStatus.ACTIVE)
       throw new BadRequestException(MessageHandler.USER_INVALID_STATUS);
 
     if (updateUserDto.email === user.email)
@@ -45,10 +45,10 @@ export class UserService {
   async remove(id: string) {
     const user = await this.userRepository.findOne({ where: { id: id } });
 
-    if (user.state === ValidState.INACTIVE)
+    if (user.status === ValidStatus.INACTIVE)
       throw new BadRequestException(MessageHandler.USER_INACTIVE);
 
-    user.state = ValidState.INACTIVE;
+    user.status = ValidStatus.INACTIVE;
     this.userRepository.save(user);
 
     return user;

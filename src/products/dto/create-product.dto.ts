@@ -49,13 +49,13 @@ export class CreateProductDto {
   @IsArray()
   gender: string[];
 
+  @IsString({ each: true })
+  @IsArray()
+  category: string;
+
   @ApiProperty()
   @IsString({ each: true })
   @IsArray()
   @IsOptional()
   images?: string[];
-
-  @ApiProperty()
-  @IsBoolean()
-  active: boolean;
 }

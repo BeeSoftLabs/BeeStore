@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { JwtPayload } from '../interfaces/jwt-payload.interface';
 import { User } from 'src/user/entities/user.entity';
-import { MessageHandler, ValidState } from 'src/shared/enums';
+import { MessageHandler, ValidStatus } from 'src/shared/enums';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -29,7 +29,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user)
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_TOKEN);
 
-    if (user.state !== ValidState.ACTIVE)
+    if (user.status !== ValidStatus.ACTIVE)
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_USER);
 
     return user;

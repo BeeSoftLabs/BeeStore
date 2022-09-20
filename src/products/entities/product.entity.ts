@@ -32,7 +32,7 @@ export class Product {
   @Column('text', { array: true })
   gender: string[];
 
-  @Column('bool', { default: true })
+  @Column('bool', { nullable: true, default: true })
   active: boolean;
 
   @OneToMany(() => ProductImage, (productImage) => productImage.product, {

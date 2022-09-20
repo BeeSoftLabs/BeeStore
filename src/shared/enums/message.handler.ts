@@ -17,4 +17,6 @@ export enum MessageHandler {
 
   PRODUCT_ALREADY_EXIST = 'Product is already exist',
   PRODUCT_NOT_FOUND = 'Product not found',
+  FILE_EMPTY = 'File is empty',
+  FILE_IS_NOT_IMG = 'Make sure that the file sent is an image.',
 }

@@ -1,4 +1,4 @@
-export enum ValidState {
+export enum ValidStatus {
   ACTIVE = 'Active',
   PREREGISTER = 'Preregister',
   INACTIVE = 'Inactive',

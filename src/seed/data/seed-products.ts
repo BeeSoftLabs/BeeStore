@@ -4,13 +4,14 @@ interface SeedProduct {
   price: number;
   stock: number;
   sizes: ValidSizes[];
-  type: ValidTypes;
-  gender: 'men' | 'women' | 'kid' | 'unisex';
+  category: ValidCategory;
+  gender: ValidGender[];
   images: string[];
 }
 
 type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
-type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
+type ValidCategory = 'shirts' | 'pants' | 'hoodies' | 'hats';
+type ValidGender = 'men' | 'women' | 'kid' | 'unisex';
 
 interface SeedProductsData {
   products: SeedProduct[];
@@ -26,8 +27,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 7,
       price: 75,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Ergonomic Concrete Towels',
@@ -37,8 +38,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 5,
       price: 200,
       sizes: ['XS', 'S', 'M', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
 
     {
@@ -49,8 +50,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 130,
       sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
 
     {
@@ -61,8 +62,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 50,
       price: 45,
       sizes: ['XS', 'S', 'M', 'L'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Sleek Soft Fish',
@@ -72,8 +73,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 50,
       price: 40,
       sizes: ['M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Sleek Frozen Pizza',
@@ -83,8 +84,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 0,
       price: 35,
       sizes: ['M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Tasty Cotton Chair',
@@ -94,8 +95,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 15,
       price: 35,
       sizes: ['S', 'M', 'L', 'XL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Practical Steel Bacon',
@@ -105,8 +106,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 17,
       price: 35,
       sizes: ['XS', 'S', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Sleek Fresh Chair',
@@ -116,8 +117,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 12,
       price: 35,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Practical Steel Mouse',
@@ -127,8 +128,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 5,
       price: 35,
       sizes: ['XS', 'S'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Refined Frozen Chips',
@@ -138,8 +139,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 2,
       price: 35,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Ergonomic Wooden Fish',
@@ -149,8 +150,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 82,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Small Rubber Pizza',
@@ -160,8 +161,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 24,
       price: 35,
       sizes: ['XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Handmade Granite Salad',
@@ -171,8 +172,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 5,
       price: 30,
       sizes: ['XS', 'S', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Sleek Concrete Pants',
@@ -182,8 +183,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 150,
       price: 30,
       sizes: ['M', 'L'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Refined Metal Cheese',
@@ -193,8 +194,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Gorgeous Fresh Pizza',
@@ -204,8 +205,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 34,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Small Steel Chair',
@@ -215,8 +216,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 15,
       price: 40,
       sizes: ['XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Fantastic Cotton Shirt',
@@ -226,8 +227,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 12,
       price: 40,
       sizes: ['XS', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Incredible Fresh Fish',
@@ -237,8 +238,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 115,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hoodies',
-      gender: 'men',
+      category: 'hoodies',
+      gender: ['men'],
     },
     {
       title: 'Practical Metal Pants',
@@ -248,8 +249,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 130,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hoodies',
-      gender: 'unisex',
+      category: 'hoodies',
+      gender: ['unisex'],
     },
     {
       title: 'Licensed Granite Shoes',
@@ -259,8 +260,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 100,
       price: 85,
       sizes: ['XS', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Incredible Fresh Shirt',
@@ -270,8 +271,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 7,
       price: 85,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Awesome Frozen Tuna',
@@ -281,8 +282,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 15,
       price: 85,
       sizes: ['XS', 'S', 'M', 'L'],
-      type: 'shirts',
-      gender: 'men',
+      category: 'shirts',
+      gender: ['men'],
     },
     {
       title: 'Fantastic Rubber Chips',
@@ -292,8 +293,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 15,
       price: 70,
       sizes: ['XS', 'S', 'XL', 'XXL'],
-      type: 'hoodies',
-      gender: 'unisex',
+      category: 'hoodies',
+      gender: ['unisex'],
     },
     {
       title: 'Handmade Rubber Towels',
@@ -303,8 +304,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 13,
       price: 60,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hoodies',
-      gender: 'unisex',
+      category: 'hoodies',
+      gender: ['unisex'],
     },
     {
       title: 'Fantastic Concrete Gloves',
@@ -314,8 +315,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 11,
       price: 30,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hats',
-      gender: 'unisex',
+      category: 'hats',
+      gender: ['unisex'],
     },
     {
       title: 'Rustic Concrete Cheese',
@@ -325,8 +326,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 13,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hats',
-      gender: 'unisex',
+      category: 'hats',
+      gender: ['unisex'],
     },
     {
       title: 'Licensed Plastic Soap',
@@ -336,8 +337,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 85,
       price: 225,
       sizes: ['XS', 'S', 'M'],
-      type: 'hoodies',
-      gender: 'women',
+      category: 'hoodies',
+      gender: ['women'],
     },
     {
       title: 'Generic Rubber Bacon',
@@ -347,8 +348,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 130,
       sizes: ['XS', 'S', 'M', 'XXL'],
-      type: 'hoodies',
-      gender: 'women',
+      category: 'hoodies',
+      gender: ['women'],
     },
     {
       title: 'Generic Soft Mouse',
@@ -358,8 +359,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 9,
       price: 110,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'hoodies',
-      gender: 'women',
+      category: 'hoodies',
+      gender: ['women'],
     },
     {
       title: 'Generic Granite Salad',
@@ -369,8 +370,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 45,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Tasty Wooden Salad',
@@ -380,8 +381,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 0,
       price: 40,
       sizes: ['XS', 'S'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Rustic Concrete Mouse',
@@ -391,8 +392,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 30,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Generic Soft Chicken',
@@ -402,8 +403,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 16,
       price: 40,
       sizes: ['XS', 'S', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Rustic Soft Computer',
@@ -413,8 +414,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 18,
       price: 35,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Refined Rubber Cheese',
@@ -424,8 +425,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 5,
       price: 35,
       sizes: ['XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Refined Metal Chips',
@@ -435,8 +436,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 16,
       price: 35,
       sizes: ['S', 'M'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Intelligent Metal Cheese',
@@ -446,8 +447,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 130,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Practical Rubber Computer',
@@ -457,8 +458,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 3,
       price: 90,
       sizes: ['M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Rustic Concrete Salad',
@@ -468,8 +469,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 162,
       price: 100,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      type: 'shirts',
-      gender: 'women',
+      category: 'shirts',
+      gender: ['women'],
     },
     {
       title: 'Rustic Wooden Cheese',
@@ -479,8 +480,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Gorgeous Rubber Pizza',
@@ -490,8 +491,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 0,
       price: 25,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Refined Metal Chair',
@@ -501,8 +502,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 25,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Ergonomic Rubber Tuna',
@@ -512,8 +513,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Licensed Fresh Cheese',
@@ -523,8 +524,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Incredible Steel Salad',
@@ -534,8 +535,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Fantastic Soft Bike',
@@ -545,8 +546,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 16,
       price: 25,
       sizes: ['XS', 'S'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Handmade Fresh Fish',
@@ -556,8 +557,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 0,
       price: 30,
       sizes: ['XS', 'S'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Refined Granite Tuna',
@@ -567,8 +568,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Handcrafted Metal Chicken',
@@ -578,8 +579,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 65,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
     {
       title: 'Sleek Wooden Towels',
@@ -589,8 +590,8 @@ export const seedProductsData: SeedProductsData = {
       stock: 10,
       price: 30,
       sizes: ['XS', 'S', 'M'],
-      type: 'shirts',
-      gender: 'kid',
+      category: 'shirts',
+      gender: ['kid'],
     },
   ],
 };

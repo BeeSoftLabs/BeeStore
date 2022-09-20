@@ -1,4 +1,5 @@
 export { MessageHandler } from './message.handler';
 export { MetaRoles } from './meta.roles';
 export { ValidRoles } from './valid.roles';
-export { ValidState } from './valid.state';
+export { ValidStatus } from './valid.status';
+export { ValidExtension } from './valid.extensions';

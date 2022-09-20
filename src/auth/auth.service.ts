@@ -66,8 +66,6 @@ export class AuthService {
     if (!bcrypt.compareSync(password, user.password))
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_CREDENTIALS);
 
-    delete user.id;
-
     return {
       ...user,
       token: this.getJwtToken({ id: user.id }),

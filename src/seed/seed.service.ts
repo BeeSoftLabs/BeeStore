@@ -1,45 +1,46 @@
-// import { Injectable } from '@nestjs/common';
-// import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
 
-// import { Product } from 'src/products/entities';
-// import { ProductsService } from 'src/products/products.service';
-// import { seedProductsData } from './data';
+import { Product } from 'src/products/entities';
+import { ProductsService } from 'src/products/products.service';
 
-// @Injectable()
-// export class SeedService {
-//   constructor(
-//     private readonly productRepository: Repository<Product>,
-//     private readonly productsService: ProductsService,
-//   ) {}
+import { seedProductsData } from './data';
 
-//   private async runSeedProducts() {
-//     await this.insertNewProducts();
-//     return 'Seed - Insert products executed!';
-//   }
+@Injectable()
+export class SeedService {
+  constructor(
+    private readonly productRepository: Repository<Product>,
+    private readonly productsService: ProductsService,
+  ) {}
 
-//   private async insertNewProducts() {
-//     await this.deleteAllProducts();
+  async runSeedProducts() {
+    await this.insertNewProducts();
+    return 'Seed - Insert products executed!';
+  }
 
-//     const products = seedProductsData.products;
+  private async insertNewProducts() {
+    await this.deleteAllProducts();
 
-//     const insertPromises = [];
+    const products = seedProductsData.products;
 
-//     products.forEach((product) => {
-//       insertPromises.push(this.productsService.create(product, null));
-//     });
+    const insertPromises = [];
 
-//     await Promise.all(insertPromises);
+    products.forEach((product) =>
+      insertPromises.push(this.productsService.create(product, null)),
+    );
 
-//     return true;
-//   }
+    await Promise.all(insertPromises);
 
-//   private async deleteAllProducts() {
-//     const query = this.productRepository.createQueryBuilder('product');
+    return true;
+  }
 
-//     try {
-//       return await query.delete().where({}).execute();
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// }
+  private async deleteAllProducts() {
+    const query = this.productRepository.createQueryBuilder('product');
+
+    try {
+      return await query.delete().where({}).execute();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}

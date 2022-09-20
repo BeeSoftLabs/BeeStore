@@ -17,11 +17,11 @@ import { ValidRoles } from 'src/shared/enums';
 
 @ApiTags('user')
 @Controller('user')
+@Auth(ValidRoles.ADMIN)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  @Auth(ValidRoles.ADMIN)
   findAll() {
     return this.userService.findAll();
   }
