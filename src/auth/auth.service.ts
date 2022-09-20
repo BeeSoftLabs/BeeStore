@@ -61,16 +61,10 @@ export class AuthService {
     });
 
     if (!user)
-      throw new UnauthorizedException(
-        'no user',
-        MessageHandler.UNAUTHORIZED_CREDENTIALS,
-      );
+      throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_CREDENTIALS);
 
     if (!bcrypt.compareSync(password, user.password))
-      throw new UnauthorizedException(
-        'no passw',
-        MessageHandler.UNAUTHORIZED_CREDENTIALS,
-      );
+      throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_CREDENTIALS);
 
     return {
       ...user,
