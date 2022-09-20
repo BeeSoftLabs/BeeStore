@@ -13,5 +13,6 @@ import { User } from './entities/user.entity';
     TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
+  exports: [TypeOrmModule],
 })
 export class UserModule {}

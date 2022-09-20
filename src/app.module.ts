@@ -7,7 +7,7 @@ import { TypeOrmConfigModule } from './config/typeorm/typeorm.module';
 import { Product } from './products/entities/product.entity';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-// import { SeedModule } from './seed/seed.module';
+import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -19,7 +19,7 @@ import { SharedModule } from './shared/shared.module';
     DatabaseModule,
     AuthModule,
     UserModule,
-    // SeedModule,
+    SeedModule,
     FilesModule,
     SharedModule,
   ],
