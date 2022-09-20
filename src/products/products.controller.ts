@@ -21,6 +21,7 @@ import { CreateProductDto, UpdateProductDto } from 'src/products/dto';
 import { Auth, GetUser } from 'src/auth/decorators';
 import { User } from 'src/user/entities/user.entity';
 import { PaginationDto } from 'src/shared/dtos';
+import { ValidRoles } from 'src/shared/enums';
 
 @ApiTags('products')
 @Controller('products')
@@ -28,7 +29,7 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  @Auth()
+  @Auth(ValidRoles.USER)
   @ApiOperation({ summary: 'Create a new product' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
@@ -52,7 +53,7 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  @Auth()
+  @Auth(ValidRoles.USER)
   @ApiOperation({ summary: 'Update product' })
   update(
     @Param('id') id: string,
@@ -63,6 +64,7 @@ export class ProductsController {
   }
 
   @Delete(':id')
+  @Auth(ValidRoles.USER)
   @ApiOperation({ summary: 'Disable products' })
   remove(@Param('id') id: string) {
     return this.productsService.remove(id);

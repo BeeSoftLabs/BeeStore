@@ -11,6 +11,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
 import { FilesService } from './files.service';
 import { fileFilter, fileRename } from './helpers';
@@ -18,6 +19,7 @@ import { fileFilter, fileRename } from './helpers';
 import { MessageHandler } from 'src/shared/enums';
 import { ConfigService } from '@nestjs/config';
 
+@ApiTags('files')
 @Controller('files')
 export class FilesController {
   constructor(
